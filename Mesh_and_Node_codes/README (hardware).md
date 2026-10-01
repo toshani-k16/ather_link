@@ -216,8 +216,4 @@ Incoming radio packets are checked for validity and duplicates. If the packet is
 - Set `ENABLE_LORA` to `1` only after the radio is wired up.
 - Replace `FALLBACK_LAT` and `FALLBACK_LNG` with a location that makes sense for your deployment.
 
----
 
-## 9. Important note about the Flask upload
-
-The function `sendToFlaskServer()` (HTTP POST to `SERVER_URL`) is defined but **never called** in the current code. At the moment the gateway only prints the packet on the serial port as `SERVER_JSON:<json>`. To post packets directly to the server, call `sendToFlaskServer(serverPayload);` inside `handlePacketAtDestination()` after the `serverPayload` string is built. Alternatively, a script on the laptop can read the serial port, pick up lines starting with `SERVER_JSON:`, and forward them to Flask.
